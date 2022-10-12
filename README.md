@@ -1,70 +1,43 @@
-# Getting Started with Create React App
+# Дипломный проект - Клиентская часть
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Реализация
+Клиентская фронт-энд часть реализована как SPA с использованием навигации на странице на основе react-router-dom 6.
 
-## Available Scripts
+### Структура проекта
 
-In the project directory, you can run:
+#### src/pages
+Папка содержит компоненты, соответствующие четырём страницам проекта.
+1. index-page - главная страница с отображением фильмов
+2. hall-page - страница с выбором места
+3. payment-page - страница подтверждения выбора
+4. ticket-page - страница с билетом
 
-### `npm start`
+#### src/store
+В папке находятся файлы, отвечающие за состояние приложения и управление им. Состояние реализовано с использованием react-redux + reduxjs/toolkit:
+1. store.js - собственно объект состояния
+2. /slice - три раздела состояния, каждый отвечающий за свою часть работы с ним:
+    - data-slice - работа с данными, в этой части хранятся данные залов, фильмов, сеансов - данные заполняются при загрузке index-page;
+    - ticket-config-slice - данные выбранного фильма, сеанса, даты и мест - они заполняются по мере продвижения пользователя по страницам, после успешной отправки данных бронирования эти данные обнуляются;
+    - booking-slice - используется для хранения данных сделанного бронирования, именно они отображаются на ticket-page;
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+   
+3. /thunks - функции для загрузки и отправки данных:
+    - data-thunk - загружает данные залов, фильмов, сеансов
+    - tickets-thunk - загружает билеты, выпущенные на выбранную пользователем дату и сеанс для отображения занятых мест на hall-page
+    - booking-thunk - отправляет данные нового билета, получает ответ и переключает на страницу, отображающую результат
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+#### components
+Папка для универсальных переиспользуемых компонентов.
 
-### `npm test`
+#### img
+Папка с изображениями.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### /css
+Папка со стилями - без изменения относительно исходных в задании.
 
-### `npm run build`
+#### /utils
+Некоторые вспомогательные утилиты, вынесенные в отдельный файл.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
