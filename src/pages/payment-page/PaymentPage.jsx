@@ -22,7 +22,7 @@ function PaymentPage() {
         const bookingData = {
             date: format(new Date(date), 'yyyy-MM-dd'),
             seanceId: seance.id,
-            seats: selectedSeats,
+            seats: JSON.stringify(selectedSeats),
         }
         dispatch(bookTicketThunk(bookingData, () => navigate('/ticket')));
     }
