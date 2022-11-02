@@ -1,15 +1,15 @@
 import {appDataErr, appDataOk, appDataReq} from "../slices/data-slice";
 
-const HOST = 'http://localhost:8000/api/';
+const HOST = process.env.REACT_APP_BASE_URL || window.location;
 
 export const dataThunk = () => {
     return async (dispatch) => {
         dispatch(appDataReq());
 
         try {
-            const replyF = await fetch(HOST + 'films').then(x => x.json());
-            const replyS = await fetch(HOST + 'seances').then(x => x.json());
-            const replyH = await fetch(HOST + 'halls').then(x => x.json());
+            const replyF = await fetch(HOST + process.env.REACT_APP_FILMS).then(x => x.json());
+            const replyS = await fetch(HOST + process.env.REACT_APP_SEANCES).then(x => x.json());
+            const replyH = await fetch(HOST + process.env.REACT_APP_HALLS).then(x => x.json());
             if (replyF.status === 'ok'
                 && replyS.status === 'ok'
                 && replyH.status === 'ok') {
@@ -20,7 +20,7 @@ export const dataThunk = () => {
                 }));
             }
         } catch (e) {
-            console.log(e.message);
+            // console.log(e.message);
             dispatch(appDataErr());
         }
     }

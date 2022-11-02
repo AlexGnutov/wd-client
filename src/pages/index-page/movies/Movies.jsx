@@ -1,4 +1,4 @@
-import MovieInfo from "./movie-info/movie-info";
+import MovieInfo from "./movie-info/MovieInfo";
 import MovieSeances from "./movie-seances/MovieSeances";
 import {useSelector} from "react-redux";
 

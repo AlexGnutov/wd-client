@@ -1,5 +1,6 @@
-import poster1 from "../../../../img/poster1.jpg";
 import PropTypes from 'prop-types';
+
+const baseLink = process.env.REACT_APP_BASE_URL || window.location;
 
 function MovieInfo(props) {
     const {film} = props;
@@ -7,7 +8,10 @@ function MovieInfo(props) {
     return (
         <div className="movie__info">
             <div className="movie__poster">
-                <img className="movie__poster-image" alt={film.imageText} src={poster1}/>
+                <img className="movie__poster-image"
+                     alt={film.imageText}
+                     src={baseLink + process.env.REACT_APP_IMAGES + film.imageFileName}
+                />
             </div>
             <div className="movie__description">
                 <h2 className="movie__title">{film.title}</h2>

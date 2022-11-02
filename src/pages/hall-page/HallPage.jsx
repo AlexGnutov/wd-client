@@ -1,4 +1,4 @@
-import {useNavigate, useParams} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import BuyingSchemeLegend from "./buying-scheme-legend/BuyingSchemeLegend";
 import {format} from "date-fns";
@@ -15,7 +15,7 @@ function HallPage() {
 
     useEffect(() => {
         dispatch(requestTicketsThunk(date, seance));
-    }, [date, seance])
+    }, [date, seance, dispatch])
 
     if (seance === null || date === null) {
         return (

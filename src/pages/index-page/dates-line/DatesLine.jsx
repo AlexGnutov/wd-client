@@ -1,5 +1,5 @@
 //for tests only
-import {addWeeks, eachDayOfInterval, format, getDate, getDay, isSameDay, isToday, isWeekend} from "date-fns";
+import {addWeeks, eachDayOfInterval, getDate, getDay, isSameDay, isToday, isWeekend} from "date-fns";
 import {useDispatch, useSelector} from "react-redux";
 import {setTicketInfo} from "../../../store/slices/ticket-config-slice";
 import {useState} from "react";
@@ -37,7 +37,7 @@ function DatesLine() {
                 <a className={configDayStyle(day, new Date(date))}
                    key={day.valueOf()}
                    draggable={false}
-                   href="#"
+                   href="#0"
                    onClick={(e) => {
                        e.preventDefault();
                        setTicketDay(day);
@@ -46,7 +46,7 @@ function DatesLine() {
                     className="page-nav__day-number">{getDate(day)}</span>
                 </a>
             )}
-            <a className="page-nav__day page-nav__day_next" href="#"
+            <a className="page-nav__day page-nav__day_next" href="#0"
                onClick={(e) => e.preventDefault()}
             />
         </nav>
