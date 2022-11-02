@@ -23,6 +23,14 @@ function MovieSeances(props) {
         <div className="movie-seances__hall">
             {
                 halls.map((hall) => {
+                    if (!hall.openedForSales) {
+                        return (
+                            <div key={hall.id}>
+                                <h3 className="movie-seances__hall-title">{hall.title}</h3>
+                                <span>Продажи в зале временно приостановлены</span>
+                            </div>
+                        )
+                    }
                     const hallFilmSeances = filmSeances.filter(seance => seance.hallId === hall.id)
                     return hallFilmSeances.length > 0 ?
                         <div key={hall.id}>
