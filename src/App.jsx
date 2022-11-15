@@ -1,15 +1,16 @@
+import React from 'react';
 import './App.css';
 import './css/normalize.css';
 import './css/styles.scss';
 
-import Header from "./components/header/Header";
-import {Outlet} from "react-router-dom";
+import { Outlet } from 'react-router-dom';
+import Header from './components/header/Header';
 
 function App() {
   return (
     <main>
-        <Header/>
-        <Outlet/>
+      <Header />
+      <Outlet />
     </main>
   );
 }
